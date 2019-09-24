@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Post from './Post';
-import Navigate from './Navigation';
-import Footer from './Footer';
+import Post from '../components/Post';
+import Navigate from '../components/common/Navigation';
+import Footer from '../components/common/Footer';
 
 
 class PostService extends Component {
