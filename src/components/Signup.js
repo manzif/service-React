@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import '../styles/App.css';
 
 class Signup extends Component {
   constructor(props) {
@@ -18,15 +17,15 @@ class Signup extends Component {
     let error_msg = document.getElementById("error-msg2");
     let success_msg = document.getElementById("success-msg2");
     axios
-      .post("http://localhost:5000/api/users", this.state)
+      .post("https://e-services-manzi.herokuapp.com/api/users", this.state, {
+        mode: "cors"
+      })
       .then(response => {
         if (response.status !== 201) {
-            console.log(response);
           error_msg.style.display = "block";
           success_msg.style.display = "none";
           error_msg.innerHTML = response.data.message;
         } else {
-          console.log(response);
           error_msg.style.display = "none";
           success_msg.style.display = "block";
           success_msg.innerHTML = response.data.message;

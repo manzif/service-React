@@ -1,35 +1,78 @@
 import React, {Component} from 'react';
-import '../styles/login.css';
-import { BrowserRouter as Router , Switch, Route, Link } from 'react-router-dom';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  submitHandler = e => {
+    e.preventDefault();
+
+    let email = this.state.email;
+    let password = this.state.password;
+    let error_msg = document.getElementById('error-msg3');
+
+    fetch('https://e-services-manzi.herokuapp.com/api/users/signin', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 200) {
+          window.location = "/admin"
+        } else {
+          error_msg.style.display = 'block';
+          error_msg.innerHTML = data.error;
+        }
+      });
+  };
+
     render(){
         return (
             <div>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>LogIN | Welcome</title>
-    <link rel="stylesheet" href="../fontawesome-free/css/all.css" />
-  </head>
-  <body>
-    <div class="login-box">
-      <div id="error-msg3" class="error-msg"></div>
-      <form id="signin-form">
-        <h1>Login</h1>
-        <div class="textbox">
-          <i class="fas fa-user"></i>
-          <input type="email" placeholder="Email" name="" id="username" />
-        </div>
-        <div class="textbox">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" name="" id="password" />
-        </div>
-        <input class="btn" type="submit" value="Signin" name="" />
-      </form>
-    </div>
-    </body>
-</div>
+                <div className="login-body">
+                    <div className="login-box">
+                      <div id="error-msg3" className="error-msg"></div>
+                          <form id="signin-form" onSubmit={this.submitHandler}>
+                            <h1>Login</h1>
+                            <div className="textbox">
+                              <i className="fas fa-user"></i>
+                                    <input type="email" 
+                                    placeholder="Email" 
+                                    name="email" 
+                                    id="username" 
+                                    value={this.state.email}
+                                    onChange={this.changeHandler}
+                                    />
+                            </div>
+                            <div className="textbox">
+                              <i className="fas fa-lock"></i>
+                                    <input type="password" 
+                                    placeholder="Password" 
+                                    name="password" 
+                                    id="password" 
+                                    value={this.state.password}
+                                    onChange={this.changeHandler}
+                                    />
+                            </div>
+                            <input className="btn" type="submit" value="Signin" name="" />
+                          </form>
+                    </div>
+                  </div>
+            </div>
         );
     }
 }

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Signup from '../components/Signup';
 import Navigate from '../components/common/Navigation';
-import Showcase from '../components/common/Showcase';
 import Abouta from '../components/common/Abouta';
 import Footer from '../components/common/Footer';
 

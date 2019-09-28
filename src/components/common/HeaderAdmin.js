@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router , Switch, Route, Link } from 'react-router-dom';
+import '../../styles/style.css';
+import { Link } from 'react-router-dom';
 
-const Navigate = () => {
+const HeaderAdmin= () => {
         return (
             <div>
                 <header>
@@ -11,9 +12,9 @@ const Navigate = () => {
                         </div>
                         <nav>
                         <ul>
-                            <li className="current"><Link to={'/'}>Home</Link></li>
-                            <li><Link to={'/about'}>About</Link></li>
-                            <li><Link to={'/postservice'}>Post a Service</Link></li>
+                            <li className="current"><Link to={'/admin'}>Admin</Link></li>
+                            <li><Link to={'/allusers'}>Users</Link></li>
+                            <li><Link to={'/'}>Log Out</Link></li>
                         </ul>
                         </nav>
                 </div>
@@ -21,4 +22,4 @@ const Navigate = () => {
             </div>
         );
 }
-export default Navigate
+export default HeaderAdmin

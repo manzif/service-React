@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "test": "jest --watchAll"
+    "start": "serve -s ./build",
+    "test": "jest --watchAll",
+    "format": "prettier --write '**/*.{js,jsx}'"
   },
   "author": "",
   "license": "ISC",
@@ -15,25 +17,35 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^5.0.0",
     "jest": "^24.8.0",
+    "prettier": "1.18.2",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "eslint-config-airbnb": "^18.0.1",
     "npx": "^10.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-load-image": "^0.1.7",
-    "react-router-dom": "^5.0.1"
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "serve": "^11.2.0"
   }
 }

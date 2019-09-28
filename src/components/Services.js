@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
-import '../styles/App.css';
 
-
-
-class Service extends Component {
-    
+class Service extends Component {  
     render(){
         return (
             <div>

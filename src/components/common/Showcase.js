@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
-import '../../styles/App.css';
+import React from 'react';
 
-class Showcase extends Component {
-    render(){
+const Showcase = () => {
         return (
             <div>
                 <section id="showcase">
@@ -22,6 +20,5 @@ class Showcase extends Component {
                 </section>
             </div>
         );
-    }
 }
 export default Showcase
